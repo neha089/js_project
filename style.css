@@ -1,0 +1,186 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html, body{
+    height: 100%;
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(58, 129, 0);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.timer {
+    font-size: 1.5em; /* Adjust the font size as needed */
+    position: absolute;
+    top: 10px; /* Adjust the top position as needed */
+    right: 10px; /* Adjust the right position as needed for top right corner */
+    color: #fff;
+}
+
+.score{
+    font-size: 4em;
+    margin-bottom: .5em;
+}
+.board{
+    height: 600px;
+    width: 600px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 80px;
+}
+.hole{
+    background-color: rgb(72, 69, 66);
+    border-radius: 50%;
+    box-shadow: inset 0 10px 0 7px rgb(53, 21, 6),
+                inset 0 20px 20px 15px rgba(0, 0, 0, .3),
+                0 0 5px rgba(0, 0, 0, .5);
+    position: relative;
+    overflow: hidden;
+}
+.hole .mole{
+    width: 70%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    animation: rise .3s ease-out;
+}
+@keyframes rise {
+    0%{
+        transform: translateX(-50%) translateY(100%);
+    }
+    100%{
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+.cursor{
+    height: 110px;
+    width: 100px;
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    background-image: url('hammer.png');
+    background-size: 100% 100%;
+    transform: translate(-20%, -20%);
+    transition: transform .1s;
+    pointer-events: none;
+}
+.cursor.active{
+    transform: translate(-20%, -20%) rotate(-45deg);
+}
+.start-game-card {
+    display: block; /* Initially show the start game card */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Center text vertically */
+    z-index: 999; /* Ensure it's on top of other elements */
+}
+
+.start-game-card h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.start-game-card p {
+    color: white;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.start-game-card button {
+    background-color: rgb(58, 129, 0);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+.start-button {
+    background-color: rgb(58, 129, 0);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+    margin-top: 20px;
+}
+
+.start-button:hover {
+    background-color: #387B00;
+}
+.start-game-card button:hover {
+    background-color: #387B00;
+}
+.game-over-card button {
+    background-color: rgb(58, 129, 0);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+.game-over-card button:hover {
+    background-color: #387B00;
+}
+
+/* Style for the updated game over card */
+.game-over-card {
+    display: none; /* Initially hide the game over card */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Center text vertically */
+    z-index: 999; /* Ensure it's on top of other elements */
+}
+
+.game-over-card h2,
+.game-over-card p {
+    color: white;
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.game-over-card p span {
+    font-weight: bold;
+    color: #ffea00; /* Yellow color for the score */
+}
+
+.game-over-card button {
+    background-color: rgb(58, 129, 0);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+.game-over-card button:hover {
+    background-color: #387B00;
+}

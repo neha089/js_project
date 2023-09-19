@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/4.0.0/css/introjs.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/4.0.0/intro.min.js"></script>
+    <title>Onboarding Tour Example</title>
+</head>
+<body>
+
+    <button id="startTour">Start Tour</button>
+
+    <script>
+        document.getElementById('startTour').addEventListener('click', function() {
+            introJs().start();
+        });
+    </script>
+
+</body>
+</html>

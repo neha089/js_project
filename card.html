@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whack-a-Mole Game</title>
+    <link rel="stylesheet" href="card.css">
+</head>
+<body>
+    <div class="game-card" id="level-card">
+        <h2 class="level-number">Level 1</h2>
+        <div class="background-image"></div>
+        <div class="moles"></div>
+        <div class="scoring-info">Stars: <span class="stars">0</span></div>
+        <p class="instructions">Whack all the moles within 60 seconds to win!</p>
+        <p class="duration-info">Complete in 60 seconds</p>
+        <button class="start-button" onclick="startGame()">Start Game</button>
+    </div>
+
+    <script src="card.js"></script>
+</body>
+</html>

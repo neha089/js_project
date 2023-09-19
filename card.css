@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+}
+
+.game-card {
+    width: 300px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.background-image {
+    /* Add background styles here */
+    height: 150px;
+    background-image: url('garden.jpg'); /* Change to your image path */
+    background-size: cover;
+    border-radius: 5px;
+}
+
+.moles {
+    /* Add mole styles here */
+    height: 100px;
+    margin-top: 10px;
+}
+
+.scoring-info {
+    margin-top: 10px;
+}
+
+.start-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
