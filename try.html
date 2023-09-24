@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Image Placement</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 50px;
+}
+
+.container {
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 5px;
+}
+
+.image-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.image-container img {
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    border: 2px solid #ccc;
+}
+
+</style>
+<script>
+    let storedPositions = [];
+
+function getRandomPosition() {
+    const position = {
+        x: Math.floor(Math.random() * 500), // Adjust according to your needs
+        y: Math.floor(Math.random() * 500)  // Adjust according to your needs
+    };
+    return position;
+}
+
+function placeImage(position) {
+    const imageContainer = document.querySelector('.image-container');
+    const image = document.createElement('img');
+    image.src = 'path_to_image.png'; // Replace with the path to your image
+    image.style.position = 'absolute';
+    image.style.left = `${position.x}px`;
+    image.style.top = `${position.y}px`;
+    storedPositions.push(position);
+    imageContainer.appendChild(image);
+}
+
+function placeRandomImages() {
+    for (let i = 0; i < 10; i++) {
+        const position = getRandomPosition();
+        placeImage(position);
+    }
+}
+
+function showStoredImages() {
+    const imageContainer = document.querySelector('.image-container');
+    imageContainer.innerHTML = ''; // Clear existing images
+
+    storedPositions.forEach(position => {
+        const image = document.createElement('img');
+        image.src = 'x1.png'; // Replace with the path to your other image
+        image.style.position = 'absolute';
+        image.style.left = `${position.x}px`;
+        image.style.top = `${position.y}px`;
+        imageContainer.appendChild(image);
+    });
+}
+
+    </script>
+<body>
+    <div class="container">
+        <button onclick="placeRandomImages()">Place Images</button>
+        <button onclick="showStoredImages()">Show Stored Images</button>
+        <div class="image-container">
+            <!-- Images will be placed here -->
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
