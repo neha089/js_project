@@ -1,0 +1,104 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    background-image: url("./1.gif.gif");
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    color: #ffffff;
+    margin-top: 20px;
+}
+
+#score {
+    color: #ffffff;
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+#timer {
+    color: #ffffff;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 540px;
+    height: 540px;
+    margin: 0 auto;
+    justify-items: center;
+    align-items: center;
+}
+
+#board div {
+    width: 180px;
+    height: 180px;
+    background-image: url("./x2.png");
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#board div img {
+    width: 100px;
+    height: 100px;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+a {
+    display: block;
+    margin-top: 20px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/* Styling for game over and congratulations screens */
+#game-over-screen,
+#congratulations-screen {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+#game-over-screen h2,
+#congratulations-screen h2 {
+    color: #ffffff;
+    font-size: 36px;
+}
+
+#game-over-screen p,
+#congratulations-screen p {
+    color: #ffffff;
+    font-size: 24px;
+}
+
+#game-over-screen button,
+#congratulations-screen button {
+    background-color: #0074cc;
+    color: #ffffff;
+    font-size: 20px;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+#game-over-screen button:hover,
+#congratulations-screen button:hover {
+    background-color: #0056a7;
+}

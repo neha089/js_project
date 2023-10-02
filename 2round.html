@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whack a Mole</title>
+    <link rel="stylesheet" href="2round.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
+    <link rel="icon" href="m1.png">
+</head>
+
+<body>
+    <h2>Whack a Mole</h2>
+    <div id="settings">
+        <label for="difficulty">Difficulty:</label>
+        <select name="difficulty" id="difficulty">
+            <option value="0">Easy</option>
+            <option value="1">Normal</option>
+            <option value="2">Medium</option>
+            <option value="3">Hard</option>
+            <option value="4">Ultra Hard</option>
+        </select>
+        <button id="newGame" class="buttons">New Game</button>
+        <button id="endGame" class="buttons">End</button>
+        <fieldset>
+            <legend>Stats</legend>
+            <p>Shots: <span id="shots">0</span> &nbsp; Misses: <span id="misses">0</span> &nbsp; Points: <span
+                    id="points">0</span></p>
+        </fieldset>
+    </div>
+
+    <div id="background">
+        <img id="mole" class="moleImg" src="m1.png" alt="Mole" width="500" height="500">
+        
+    </div>
+    <img src="b1.png" id="boomImage" class="invisibleBoom" alt="BOOM" width="500" height="500">
+    
+    <script src="2round.js"></script>
+</body>
+
+</html>
