@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find me !!</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.9/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0beta3/css/all.min.css">
+    <style>
+        #levelTitle {
+            color: white;
+        }
+        body {
+            background-image: url('back1.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            font-family: 'Comic Sans MS', cursive, sans-serif; /* Child-friendly font */
+        }
+        .card {
+            animation: bounceIn 1.5s; /* Bounce animation */
+        }
+        @keyframes bounceIn {
+            from {
+                transform: scale(0.8);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+        .custom-card .card-inner {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .custom-card .card-front, .custom-card .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .custom-card .card-back {
+            transform: rotateY(180deg);
+        }
+
+        .custom-card .flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .custom-card {
+            width: 300px;
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            border: 5px solid #FFD700; /* Vibrant border color */
+            border-radius: 20px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow */
+            position: relative; /* Add position relative */
+        }
+        .card-body {
+            text-align: center;
+            position: absolute; /* Make the body position absolute */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%; /* Set width to 100% */
+        }
+        .btn-container {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+        }
+        .btn-container .btn {
+            width: 45%; /* Set width of buttons */
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4" id="levelTitle">Multi-Level Game - Level 1</h1>
+        <div id="level" class="text-center mb-4"></div>
+        <div class="row">
+            <!-- Card 1 -->
+            <div class="col-md-4 mb-4">
+                <div class="card custom-card" data-image="l1_u.png">
+                    <div class="card-body">
+                        <i class="fas fa-lock fa-3x mb-3"></i>
+                    </div>
+                    <div class="card-front">
+                        <div class="btn-container">
+                            <a href="1round.html" id="playLevel1" class="btn btn-success">Play</a>
+                            <a href="2round.html" id="nextLevel1" class="btn btn-primary">Next Level</a>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <img src="l1_u.png" alt="Unlocked Image">
+                        <a href="#" class="btn btn-primary">Next Level</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="col-md-4 mb-4">
+                <div class="card custom-card" data-image="l2_u.png">
+                    <div class="card-body">
+                        <i class="fas fa-lock fa-3x mb-3"></i>
+                    </div>
+                    <div class="btn-container">
+                        <a href="2round.html" id="playLevel2" class="btn btn-success">Play</a>
+                        <a href="3round.html" id="nextLevel2" class="btn btn-primary">Next Level</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="col-md-4 mb-4">
+                <div class="card custom-card" data-image="l3_u.png">
+                    <div class="card-body">
+                        <i class="fas fa-lock fa-3x mb-3"></i>
+                    </div>
+                    <div class="btn-container">
+                        <a href="3round.html" id="playLevel3" class="btn btn-success">Play</a>
+                        <a href="4round.html" id="nextLevel3" class="btn btn-primary">Next Level</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Card 4 -->
+            <div class="col-md-4 mb-4">
+                <div class="card custom-card" data-image="l4_u.png">
+                    <div class="card-body">
+                        <i class="fas fa-lock fa-3x mb-3"></i>
+                    </div>
+                    <div class="btn-container">
+                        <a href="4round.html" id="playLevel4" class="btn btn-success">Play</a>
+                        <a href="5round.html" id="nextLevel4" class="btn btn-primary">Next Level</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 5 -->
+            <div class="col-md-4 mb-4">
+                <div class="card custom-card" data-image="l5_u.png">
+                    <div class="card-body">
+                        <i class="fas fa-lock fa-3x mb-3"></i>
+                    </div>
+                    <div class="btn-container">
+                        <a href="#" id="playLevel5" class="btn btn-success">Play</a>
+                        <a href="#" id="nextLevel5" class="btn btn-primary">Next Level</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function flipCard(cardId) {
+            var card = document.getElementById(cardId);
+
+            // Check your specific condition here
+            var conditionSatisfied = true; // Replace this with your actual condition
+
+            if (conditionSatisfied) {
+                card.classList.toggle('flipped');
+
+                // Get the data-image attribute value
+                var imagePath = card.getAttribute('data-image');
+
+                // Change the image source on the flipped side
+                var cardBack = card.querySelector('.card-back img');
+                cardBack.src = imagePath;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -5,21 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Find me !!</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.9/dist/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.9/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0beta3/css/all.min.css">
     <style>
         #levelTitle {
-    color: white;
-}
-
+            color: white;
+        }
+        body {
+            background-image: url('back1.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+        }
         /* Add your custom CSS styles here */
         .card {
             animation: fadeInUp 1s;
-        
         }
 
         @keyframes fadeInUp {
@@ -32,25 +34,35 @@
                 opacity: 1;
             }
         }
+        .card-with-background {
+            background-image: url('l1_l.png'); /* Replace 'background.jpg' with your image path */
+            background-size: cover;
+
+            height: 100%;
+        }
     </style>
 </head>
-<body background="back1.jpg" background-size="cover">
+<body>
     <div class="container mt-5">
-        <h1 class="text-center mb-4" id="levelTitle"  >Multi-Level Game - Level 1</h1>
+        <h1 class="text-center mb-4" id="levelTitle">Multi-Level Game - Level 1</h1>
         <div id="level" class="text-center mb-4"></div>
         <div class="row">
             <!-- Card 1 -->
             <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <i class="fas fa-lock fa-3x mb-3"></i>
-                        <h5 class="card-title">Level 1</h5>
-                        <p class="card-text">Card content for level 1.</p>
-                        <a href="1round.html" id="playLevel1" class="btn btn-success">Play</a>
-                        <a href="2round.html" id="nextLevel1" class="btn btn-primary">Next Level</a>
+                <div class="card-with-background">
+                    <div class="card">
+                        <div class="card-body">
+                            <i class="fas fa-lock fa-3x mb-3"></i>
+                            <h5 class="card-title">Level 1</h5>
+                            <p class="card-text">Card content for level 1.</p>
+                            <a href="1round.html" id="playLevel1" class="btn btn-success">Play</a>
+                            <a href="2round.html" id="nextLevel1" class="btn btn-primary">Next Level</a>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
             
             <!-- Card 2 -->
             <div class="col-md-4">
@@ -105,7 +117,17 @@
             </div>
         </div>
     </div>
-
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+        var cardBody = card.querySelector('.card-body');
+cardBody.innerHTML = `
+    <h5 class="card-title">Level ${level}</h5>
+    <p class="card-text">Congratulations! You scored well.</p>
+    <img src="l1_u.png" alt="Second Image">
+`;
+        </script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const levelElement = document.getElementById("level");
