@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="1round.css">
     <title>Whack-a-Mole Game</title>
+    <link rel="icon" href="m1.png">
 </head>
 <body>
     <div class="game-container">
@@ -21,19 +22,36 @@
             <div class="hole"></div>
             <div class="hole"></div>
         </div>
-        <div class="cursor"></div>
-    <div class="timer">Time Left: <span id="timer">60</span> seconds</div>
-    <div class="start-game-card">
-        <h2>Welcome to Whack-a-Mole</h2>
-        <p>Click the button below to start the game!</p>
-        <button class="start-button" id="start-button">Start Game</button>
+         <div class="cursor"></div>
+        <div class="timer">Time Left: <span id="timer">60</span> seconds</div>
+        <div class="start-game-card">
+            <h2>Welcome to Whack-a-Mole</h2>
+            <h3 style="text-align:center;">Click the button below to start the game!</h3>
+            <button class="start-button" id="start-button">Start Game</button>
+        </div>
+        <div class="buttons-container">
+            <button id="pause-button">Pause</button>
+        </div>
+        <div class="game-over-container">
+           <div class="game-over-card">
+    <h2>Game Over</h2>
+    <p>Your final score is: <span id="final-score">0</span></p>
+    <p>Highest score: <span id="highest-score">0</span></p>
+    <button class="Home_button" id="Home_button">Home</button>
+    <button class="restart-button" id="restart-button">Restart</button>
+</div>
+
+            <div class="congratulation-card">
+                <h2>Congratulations!</h2>
+                <p>Your final score is: <span id="final-score-congratulation">0</span></p>
+                <p>Highest score: <span id="highest-score-congratulation">0</span></p>
+                <button class="home-button" id="home-button">Home</button>
+                <button class="restart-button" id="restart-button-congratulation">Restart</button>
+                <button class="next-level-button" id="next-level-button">Next Level</button>
+            </div>
+        </div>
     </div>
-    <div class="game-over-card">
-        <h2>Game Over</h2>
-        <p>Your final score is: <span id="final-score">0</span></p>
-        <p>Highest score: <span id="highest-score">0</span></p>
-    </div>
-    
+
     <script src="1round.js"></script>
 </body>
 </html>

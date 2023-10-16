@@ -4,12 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Find me !!</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.9/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         #levelTitle {
             color: white;
@@ -84,78 +80,118 @@
         .btn-container .btn {
             width: 45%; /* Set width of buttons */
         }
+
+        /* Added styles for user score */
+        .user-score {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="container mt-5">
         <h1 class="text-center mb-4" id="levelTitle">Multi-Level Game - Level 1</h1>
         <div id="level" class="text-center mb-4"></div>
+
         <div class="row">
             <!-- Card 1 -->
             <div class="col-md-4 mb-4">
-                <div class="card custom-card" data-image="l1_u.png">
+                <div class="card custom-card" style="background-image: url('1card.jpg');">
                     <div class="card-body">
-                        <i class="fas fa-lock fa-3x mb-3"></i>
+                        <span id="icon1"><i class="fas fa-unlock fa-3x mb-3"></i></span>
                     </div>
                     <div class="card-front">
                         <div class="btn-container">
-                            <a href="1round.html" id="playLevel1" class="btn btn-success">Play</a>
-                            <a href="2round.html" id="nextLevel1" class="btn btn-primary">Next Level</a>
+                            <a href="1round.html" class="btn btn-success" id="play1">Play</a>
+                            <a href="2round.html" class="btn btn-primary" id="next2" >Next Level</a>
                         </div>
                     </div>
-                    <div class="card-back">
-                        <img src="l1_u.png" alt="Unlocked Image">
-                        <a href="#" class="btn btn-primary">Next Level</a>
+                    
+                    <!-- Add an element to display level 1 score -->
+                    <div class="user-score">
+                        <h2>Level 1 Score</h2>
+                        <p id="level1Score">Loading...</p>
                     </div>
                 </div>
             </div>
             <!-- Card 2 -->
             <div class="col-md-4 mb-4">
-                <div class="card custom-card" data-image="l2_u.png">
+                <div class="card custom-card" style="background-image: url('2card.jpg');">
                     <div class="card-body">
-                        <i class="fas fa-lock fa-3x mb-3"></i>
+                        <span id="icon2"><i class="fas fa-lock fa-3x mb-3"></i></span>
                     </div>
-                    <div class="btn-container">
-                        <a href="2round.html" id="playLevel2" class="btn btn-success">Play</a>
-                        <a href="3round.html" id="nextLevel2" class="btn btn-primary">Next Level</a>
+                    <div class="card-front">
+                        <div class="btn-container">
+                            <a href="2round.html" class="btn btn-success"    id="play2">Play</a>
+                            <a href="3round.html" class="btn btn-primary" id="next3">Next Level</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Add an element to display level 2 score -->
+                    <div class="user-score">
+                        <h2>Level 2 Score</h2>
+                        <p id="level2Score">Loading...</p>
                     </div>
                 </div>
             </div>
             <!-- Card 3 -->
             <div class="col-md-4 mb-4">
-                <div class="card custom-card" data-image="l3_u.png">
+                <div class="card custom-card" style="background-image: url('card3.jpg');">
                     <div class="card-body">
-                        <i class="fas fa-lock fa-3x mb-3"></i>
+                        <span id="icon3"><i class="fas fa-lock fa-3x mb-3"></i></span>
                     </div>
-                    <div class="btn-container">
-                        <a href="3round.html" id="playLevel3" class="btn btn-success">Play</a>
-                        <a href="4round.html" id="nextLevel3" class="btn btn-primary">Next Level</a>
+                    <div class="card-front">
+                        <div class="btn-container">
+                            <a href="3round.html" class="btn btn-success"   id="play3">Play</a>
+                            <a href="4round.html" class="btn btn-primary"id="next4">Next Level</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Add an element to display level 3 score -->
+                    <div class="user-score">
+                        <h2>Level 3 Score</h2>
+                        <p id="level3Score">Loading...</p>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
             <!-- Card 4 -->
             <div class="col-md-4 mb-4">
-                <div class="card custom-card" data-image="l4_u.png">
+                <div class="card custom-card" style="background-image: url('4card.webp');">
                     <div class="card-body">
-                        <i class="fas fa-lock fa-3x mb-3"></i>
+                        <span id="icon4"><i class="fas fa-unlock fa-3x mb-3"></i></span>
                     </div>
-                    <div class="btn-container">
-                        <a href="4round.html" id="playLevel4" class="btn btn-success">Play</a>
-                        <a href="5round.html" id="nextLevel4" class="btn btn-primary">Next Level</a>
+                    <div class="card-front">
+                        <div class="btn-container">
+                            <a href="4round.html" class="btn btn-success"  id="play4">Play</a>
+                            <a href="5round.html" class="btn btn-primary"id="next5">Next Level</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Add an element to display level 4 score -->
+                    <div class="user-score">
+                        <h2>Level 4 Score</h2>
+                        <p id="level4Score">Loading...</p>
                     </div>
                 </div>
             </div>
             <!-- Card 5 -->
             <div class="col-md-4 mb-4">
-                <div class="card custom-card" data-image="l5_u.png">
+                <div class="card custom-card" style="background-image: url('5card.jpg');">
                     <div class="card-body">
-                        <i class="fas fa-lock fa-3x mb-3"></i>
+                        <span id="icon5"><i class="fas fa-lock fa-3x mb-3"></i></span>
                     </div>
-                    <div class="btn-container">
-                        <a href="#" id="playLevel5" class="btn btn-success">Play</a>
-                        <a href="#" id="nextLevel5" class="btn btn-primary">Next Level</a>
+                    <div class="card-front">
+                        <div class="btn-container">
+                            <a href="5round.html" class="btn btn-success" id="play5">Play</a>
+                            <a href="#" class="btn btn-primary">Next Level</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Add an element to display level 5 score -->
+                    <div class="user-score" >
+                        <h2>Level 5 Score</h2>
+                        <p id="level5Score">Loading...</p>
                     </div>
                 </div>
             </div>
@@ -163,23 +199,93 @@
     </div>
 
     <script>
-        function flipCard(cardId) {
-            var card = document.getElementById(cardId);
+        document.addEventListener('DOMContentLoaded', function () {
 
-            // Check your specific condition here
-            var conditionSatisfied = true; // Replace this with your actual condition
+// Load scores from localStorage
+var level1Score = parseInt(localStorage.getItem('level1Score')) || 0;
+var level2Score = parseInt(localStorage.getItem('level2Score')) || 0;
+var level3Score = parseInt(localStorage.getItem('level3Score')) || 0;
+var level4Score = parseInt(localStorage.getItem('level4Score')) || 0;
+var level5Score = parseInt(localStorage.getItem('level5Score')) || 0;
 
-            if (conditionSatisfied) {
-                card.classList.toggle('flipped');
+// Update the scores
+document.getElementById('level1Score').textContent = 'Score: ' + level1Score;
+document.getElementById('level2Score').textContent = 'Score: ' + level2Score;
+document.getElementById('level3Score').textContent = 'Score: ' + level3Score;
+document.getElementById('level4Score').textContent = 'Score: ' + level4Score;
+document.getElementById('level5Score').textContent = 'Score: ' + level5Score;
 
-                // Get the data-image attribute value
-                var imagePath = card.getAttribute('data-image');
+// Check and enable/disable buttons
+ let var1=false;
+let var2=false;
+let var3=false;
+let var4=false;
 
-                // Change the image source on the flipped side
-                var cardBack = card.querySelector('.card-back img');
-                cardBack.src = imagePath;
-            }
-        }
+// Disable "Next Level" buttons based on your conditions
+
+
+if ((!(level1Score>=100)) ){
+    document.getElementById('next2').addEventListener('click', function (event) {
+        event.preventDefault();
+    });
+    document.getElementById('play2').addEventListener('click', function (event) {
+        event.preventDefault();
+    });
+}
+else{
+    var iconElement = document.getElementById('icon2');
+        iconElement.innerHTML = '<i class="fas fa-unlock fa-3x mb-3"></i>';
+}
+
+if (!(level2Score>=200)) {
+    var2=true;
+    document.getElementById('next3').addEventListener('click', function (event) {
+        event.preventDefault();
+    });
+    document.getElementById('play3').addEventListener('click', function (event) {
+        event.preventDefault();
+    });
+}
+else{
+    var iconElement = document.getElementById('icon3');
+        iconElement.innerHTML = '<i class="fas fa-unlock fa-3x mb-3"></i>';
+}
+
+if (!(level3Score>=300)) {
+    var3=true;
+
+    document.getElementById('next4').addEventListener('click', function (event) {
+        event.preventDefault();
+    });
+    document.getElementById('play4').addEventListener('click', function (event) {
+        event.preventDefault();
+    });
+}
+else{
+    var iconElement = document.getElementById('icon4');
+        iconElement.innerHTML = '<i class="fas fa-unlock fa-3x mb-3"></i>';
+}
+
+if (!(level4Score>=300)) {
+    var4=true;
+
+    document.getElementById('next5').addEventListener('click', function (event) {
+        event.preventDefault();
+    });
+    document.getElementById('play5').addEventListener('click', function (event) {
+        event.preventDefault();
+    });
+}
+else{
+    var iconElement = document.getElementById('icon5');
+        iconElement.innerHTML = '<i class="fas fa-unlock fa-3x mb-3"></i>';
+}
+
+});
     </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

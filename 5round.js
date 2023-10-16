@@ -1,172 +1,229 @@
-const molePaths = ["alien.png", "alien.png", "alien.png"];
-const intervals=[1600, 1300, 1000, 700, 550];
-const mole = document.getElementById("mole");
-const background = document.getElementById("background");
-const shotsLabel = document.getElementById("shots");
-const missesLabel = document.getElementById("misses");
-const pointsLabel = document.getElementById("points");
-const boom=document.getElementById("boomImage");
+document.addEventListener("DOMContentLoaded", function () {
+    let sharkImages= document.querySelectorAll("img[src='alien.png']");
+    let score = 0;
+    let gameOver = false;
+    let timeLeft = 10; // Initial time in seconds
+    const sound = new Audio("smash.mp3");
+    let highScore = 0;
+    let timerElement;
+    let sharkInterval;
+    let isPaused = false;
+    let p = document.getElementById("pause-button");
 
-let isMoleClicked = false, wasGameOver = false, alreadyMissed = false, wasGameEnded = false;
-let timer;
-let points = 0, misses = 0, shots = 0;
-
-let minWidth = 0;//=10;
-let maxWidth = 0;//=background.clientWidth-10-mole.clientWidth;
-let minHeight = 0;//=70;
-let maxHeight = 0;//=background.clientHeight-10-mole.clientHeight;
-
-background.classList.add("playgroundIdle");
-disableEnd();
-
-mole.addEventListener("mousedown", (e) => {
-    isMoleClicked = true;
-    shots++;
-    if (mole.src.includes("mole1")) {
-        points += 1;
+    if (p) {
+        p.addEventListener("click", togglePause);
     }
-    else if (mole.src.includes("mole2")) {
-        points += 2;
+    window.onload = function () {
+        setGame();
+    };
+
+    function setGame() {
+        // Start the timer
+        startTimer();
+
+        // Set sharks
+        sharkInterval = setInterval(moveSharks, 1000);
     }
-    else if (mole.src.includes("mole3")) {
-        points += 3;
-    }
-    shotsLabel.innerText = shots;
-    pointsLabel.innerText = points;
-    boom.style.left=e.x-25+"px";
-    boom.style.top=e.y-25+"px";
-    boom.classList.remove("invisibleBoom");
-    boom.classList.add("boom");
-    mole.remove();
-});
 
-document.getElementById("newGame").addEventListener("click", () => {
-    disableSettings();
-    enableEnd();
-    if (background.classList.contains("playgroundIdle"))
-        background.classList.remove("playgroundIdle");
-    if (!background.classList.contains("playgroundActive"))
-        background.classList.add("playgroundActive");
-
-    if (wasGameOver || wasGameEnded)
-        background.lastElementChild.remove();
-
-    if (background.childElementCount === 0)
-        background.appendChild(mole);
-
-    mole.classList.remove("invisibleImg");
-    mole.classList.add("moleImg");
-
-    resetStats();
-    minWidth = 10;
-    maxWidth = background.clientWidth - 10 - mole.clientWidth;
-    minHeight = 70;
-    maxHeight = background.clientHeight - 10 - mole.clientHeight;
-
-    wasGameOver = false;
-    wasGameEnded = false;
-    if (timer !== undefined)
-        clearInterval(timer);
-    let diff = document.getElementById("difficulty").value;
-    
-    timer = setInterval(() => {
-        isMoleClicked = false,
-        alreadyMissed = false,
-        boom.classList.remove("boom"),
-        boom.classList.add("invisibleBoom"),
-        generateMole()
-    }, intervals[diff]);
-
-    /*
-    console.log(`minWidth= ${minWidth}`);
-    console.log(`maxWidth ${maxWidth}`);
-    console.log(`minHeight ${minHeight}`);
-    console.log(`maxHeight ${maxHeight}`);
-
-    console.log(`background.clientWidth ${background.clientWidth}`);
-    console.log(`background.clientHeight ${background.clientHeight}`);
-    console.log(`mole.clientWidth ${mole.clientWidth}`);
-    console.log(`mole.clientHeight ${mole.clientHeight}`);
-    */
-});
-
-document.getElementById("endGame").addEventListener("click", () => {
-    disableEnd();
-    enableSettings();
-    clearInterval(timer);
-    wasGameEnded = true;
-    mole.classList.remove("moleImg");
-    mole.classList.add("invisibleImg");
-    addText(`You ended the game and scored ${points} points!`);
-});
-
-document.getElementById("background").addEventListener("click", () => {
-    if (!isMoleClicked && !alreadyMissed) {
-        mole.remove();
-
-        misses++;
-        alreadyMissed = true;
-        if (misses <= 10 && !wasGameEnded) {
-            missesLabel.innerText = misses;
-        }
-
-        if (misses === 10) {
-            disableEnd();
-            enableSettings();
-            clearInterval(timer);
-            wasGameOver = true;
-            mole.classList.remove("moleImg");
-            mole.classList.add("invisibleImg");
-            addText(`You missed 10 times and lose!\nYour score: ${points} points`);
+    function togglePause() {
+        console.log("Pause button clicked");
+        if (isPaused) {
+            // If the game is paused, resume it
+            isPaused = false;
+            p.textContent = "Pause";
+            resumeGame();
+        } else {
+            // If the game is not paused, pause it
+            isPaused = true;
+            p.textContent = "Resume";
+            pauseGame();
         }
     }
+
+    function pauseGame() {
+        // Stop the shark intervals and the timer to pause the game
+        clearInterval(sharkInterval);
+        clearInterval(timerInterval);
+    }
+
+    function resumeGame() {
+        if (!gameOver) {
+            // Start the shark interval and resume the game
+            sharkInterval = setInterval(moveSharks, 1000);
+            if (!isPaused) {
+                startTimer();
+            }
+        }
+    }
+
+    function startTimer() {
+        timerElement = document.getElementById("timer");
+        if (timerElement) {
+            timerElement.innerText = `Time Left: ${timeLeft} seconds`;
+
+            timerInterval = setInterval(function () {
+                if (isPaused) {
+                    // If the game is paused, do nothing
+                    return;
+                }
+
+                timeLeft--;
+                if (timerElement) {
+                    timerElement.innerText = `Time Left: ${timeLeft} seconds`;
+                }
+
+                if (timeLeft === 0) {
+                    gameOver = true;
+                    clearInterval(timerInterval);
+                    document.getElementById("score").innerText = score;
+                    if (score >= 10) {
+                        showCongratulationsScreen();
+                    } else {
+                        showGameOverScreen();
+                    }
+                }
+            }, 1000);
+        }
+    }
+
+    function moveSharks() {
+        if (gameOver) {
+            return;
+        }
+        clearSharkImages();
+           
+            let sharkImage = document.createElement("img");
+            sharkImage.src =  "alien.png";
+            sharkImage.style.position = "absolute";
+            sharkImage.style.width = "200px";
+            sharkImage.style.height = "200px";
+
+            const randomX = Math.floor(Math.random() * window.innerWidth);
+            const randomY = Math.floor(Math.random() * window.innerHeight);
+
+            sharkImage.style.left = randomX + "px";
+            sharkImage.style.top = randomY + "px";
+
+            sharkImage.addEventListener("click", selectShark);
+
+           document.body.appendChild(sharkImage);
+
+            //sharkImages.push(sharkImage);
+        
+    }
+
+   function selectShark() {
+    if (isPaused || gameOver) {
+        return;
+    }
+
+    score += 10;
+    sound.play();
+
+    this.src = "b1.png";
+
+    setTimeout(() => {
+        this.remove();
+        //sharkImages.splice(sharkImages.indexOf(this), 1);
+    }, 500);
+
+    document.getElementById("score").innerText = score.toString();
+    localStorage.setItem('userScore', score);
+
+    localStorage.setItem('level5Score', score); // Add this line to store the Level 2 score
+
+    // Check userScore and enable subsequent levels
+    if (score >= 500) {
+        document.getElementById('playLevel3').classList.remove('disabled');
+    }
+}
+function clearSharkImages() {
+     const iceaImages = document.querySelectorAll("img[src='alien.png']");
+    iceaImages.forEach(iceaImage => {
+        iceaImage.remove();
+    });
+}
+    function showCongratulationsScreen() {
+        const congratulationsScreen = document.getElementById("congratulations-screen");
+        const congratulationsFinalScore = document.getElementById("congratulations-final-score");
+        const congratulationsHighScore = document.getElementById("congratulations-high-score");
+        const restartButtonCongratulations = document.getElementById("restart-button-congratulations");
+        const homeButtonCongratulations = document.getElementById("home-button-congratulations");
+        
+        // Hide the timer and pause button
+        timerElement.style.display = "none";
+        p.style.display = "none";
+
+        // Show the congratulations screen
+        congratulationsScreen.style.display = "block";
+        congratulationsFinalScore.textContent = score;
+         clearSharkImages();
+        // Update the highest score
+        if (score > highScore) {
+            highScore = score;
+            congratulationsHighScore.textContent = highScore;
+        }
+
+        // Add event listeners to buttons
+        restartButtonCongratulations.addEventListener("click", restartGame);
+        homeButtonCongratulations.addEventListener("click", returnToHome);
+}
+
+    function showGameOverScreen() {
+        const gameOverScreen = document.getElementById("game-over-screen");
+        const finalScore = document.getElementById("final-score");
+        const highScoreElement = document.getElementById("high-score");
+        const restartButton = document.getElementById("restart-button");
+        const homeButton = document.getElementById("home-button");
+
+        // Hide the timer and pause button
+        timerElement.style.display = "none";
+        p.style.display = "none";
+
+        // Show the game over screen
+        gameOverScreen.style.display = "block";
+        finalScore.textContent = score;
+
+        // Update the highest score
+        if (score > highScore) {
+            highScore = score;
+            highScoreElement.textContent = highScore;
+        }
+        clearSharkImages();
+        // Add event listeners to buttons
+        restartButton.addEventListener("click", restartGame);
+        homeButton.addEventListener("click", returnToHome);
+    }
+
+    function restartGame() {
+        // Reset the game variables and screen
+        score = 0;
+       document.getElementById("score").innerText = score;
+        timeLeft = 10;
+        gameOver = false;
+        p.style.display = "block";
+        clearInterval(timerInterval);
+        clearInterval(sharkInterval);
+
+        // Reset and display the timer
+        timerElement.style.display = 'block';
+        timerElement.textContent = `Time Left: ${timeLeft} seconds`;
+
+        clearSharkImages();
+        // Hide the game over or congratulations screen
+        const gameOverScreen = document.getElementById("game-over-screen");
+        gameOverScreen.style.display = "none";
+
+        const congratulationsScreen = document.getElementById("congratulations-screen");
+        congratulationsScreen.style.display = "none";
+
+        // Start a new game
+        setGame();
+    }
+
+    function returnToHome() {
+        // Redirect to home.html or the desired home page
+        window.location.href = "try1.html";
+    }
+
 });
-
-window.onresize = () => {
-    maxWidth = background.clientWidth - 10 - mole.clientWidth;
-    maxHeight = background.clientHeight - 10 - mole.clientHeight;
-}
-
-function generateMole() {
-    let x = Math.floor(Math.random() * (maxWidth - minWidth)) + minWidth;
-    let y = Math.floor(Math.random() * (maxHeight - minHeight)) + minHeight;
-    mole.style.left = x + "px";
-    mole.style.top = y + "px";
-    mole.src = molePaths[Math.floor(Math.random() * molePaths.length)];
-    background.appendChild(mole);
-}
-
-function resetStats() {
-    shots = misses = points = 0;
-    shotsLabel.innerText = shots;
-    pointsLabel.innerText = points;
-    missesLabel.innerText = misses;
-}
-
-function disableSettings() {
-    document.getElementById("newGame").disabled = true;
-    document.getElementById("newGame").style.backgroundColor = "#EEE";
-    document.getElementById("difficulty").disabled = true;
-}
-function enableSettings() {
-    document.getElementById("newGame").disabled = false;
-    document.getElementById("newGame").style.backgroundColor = "#BCD33D";
-    document.getElementById("difficulty").disabled = false;
-}
-
-function addText(text) {
-    const h2 = document.createElement("h2");
-    h2.classList = "loseGame";
-    h2.innerText = text;
-    background.appendChild(h2);
-}
-
-function disableEnd() {
-    document.getElementById("endGame").disabled = true;
-    document.getElementById("endGame").style.backgroundColor = "#EEE";
-}
-
-function enableEnd() {
-    document.getElementById("endGame").disabled = false;
-    document.getElementById("endGame").style.backgroundColor = "#fc4c3f";
-}

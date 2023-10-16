@@ -1,42 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Whack a Mole</title>
+    <title>Whac a Shark</title>
     <link rel="stylesheet" href="5round.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
-    <link rel="icon" href="m1.png">
-</head>
-
-<body>
-    <h2>Whack a Mole</h2>
-    <div id="settings">
-        <label for="difficulty">Difficulty:</label>
-        <select name="difficulty" id="difficulty">
-            <option value="0">Easy</option>
-            <option value="1">Normal</option>
-            <option value="2">Medium</option>
-            <option value="3">Hard</option>
-            <option value="4">Ultra Hard</option>
-        </select>
-        <button id="newGame" class="buttons">New Game</button>
-        <button id="endGame" class="buttons">End</button>
-        <fieldset>
-            <legend>Stats</legend>
-            <p>Shots: <span id="shots">0</span> &nbsp; Misses: <span id="misses">0</span> &nbsp; Points: <span
-                    id="points">0</span></p>
-        </fieldset>
-    </div>
-
-    <div id="background">
-        <img id="mole" class="moleImg" src="alien.png" alt="Mole">
-    </div>
-    <img src="b1.png" id="boomImage" class="invisibleBoom" alt="BOOM">
-    
     <script src="5round.js"></script>
-</body>
+</head>
+<body>
+    <h1>Whac a Shark</h1>
+    <h2 id="score">0</h2>
+    <button id="pause-button">Pause</button>
+    <div id="timer"></div>
+    <!-- Game Over Screen -->
+    <div id="game-over-screen" style="display: none;">
+        <h2>Game Over</h2>
+        <p>Your Score: <span id="final-score">0</span></p>
+        <p>Highest Score: <span id="high-score">0</span></p>
+        <button id="restart-button">Restart</button>
+        <button id="home-button">Home</button>
+    </div>
+    <div id="congratulations-screen" style="display: none;">
+        <h2>Congratulations!</h2>
+        <p>Your Final Score: <span id="congratulations-final-score">0</span></p>
+        <p>Highest Score: <span id="congratulations-high-score">0</span></p>
+        <button id="restart-button-congratulations">Restart</button>
+        <button id="home-button-congratulations">Home</button>
+    </div>
 
+    <!-- Add a link to home.html for returning to the home page -->
+<div class="a1">
+            <a href="try1.html" class="text-dark" style="color:white;">Home </a>
+        </div>
+
+</body>
 </html>

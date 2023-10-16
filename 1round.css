@@ -1,7 +1,5 @@
-*{
-    margin: 0;
-    padding: 0;
-}
+
+  
 html, body{
     height: 100%;
 }
@@ -77,91 +75,72 @@ body{
     transform: translate(-20%, -20%) rotate(-45deg);
 }
 .start-game-card {
-    display: block; /* Initially show the start game card */
+    display: flex; /* Initially show the start game card */
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
-    display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column; /* Center text vertically */
+    flex-direction: column; /* Center content vertically and horizontally */
     z-index: 999; /* Ensure it's on top of other elements */
 }
 
 .start-game-card h2 {
-    font-size: 2em;
-    margin-bottom: 10px;
-    color: white;
+    font-size: 2.5em; /* Larger font size */
+    margin-bottom: 20px; /* More spacing */
+    color: #fff;
+   text-align: center;
 }
 
-.start-game-card p {
-    color: white;
-    font-size: 1.2em;
-    margin-bottom: 20px;
-}
 
 .start-game-card button {
-    background-color: rgb(58, 129, 0);
-    color: #fff;
+    background-color: #4CAF50; /* Custom color for the start button */
+    color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1.2em;
-}
-.start-button {
-    background-color: rgb(58, 129, 0);
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1.2em;
-    margin-top: 20px;
+    transition: background-color 0.3s; /* Add a smooth transition effect */
+    display: block; /* Set button to block element */
 }
 
-.start-button:hover {
-    background-color: #387B00;
+/* Center the button horizontally */
+.start-game-card button {
+    margin: 0 auto;
 }
+
 .start-game-card button:hover {
-    background-color: #387B00;
-}
-.game-over-card button {
-    background-color: rgb(58, 129, 0);
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1.2em;
+    background-color: #45A049; /* Custom color on hover */
 }
 
-.game-over-card button:hover {
-    background-color: #387B00;
+
+#pause-button {
+    position: absolute;
+    top: 40px; /* Adjust the top position as needed */
+    right: 10px; /* Adjust the right position as needed */
 }
 
-/* Style for the updated game over card */
 .game-over-card {
     display: none; /* Initially hide the game over card */
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px; /* Set the width as needed */
     background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column; /* Center text vertically */
+    padding: 20px;
+    text-align: center;
     z-index: 999; /* Ensure it's on top of other elements */
+    border-radius: 10px;
+    color: white;
 }
 
 .game-over-card h2,
 .game-over-card p {
-    color: white;
     font-size: 2em;
     margin-bottom: 10px;
 }
@@ -172,15 +151,57 @@ body{
 }
 
 .game-over-card button {
-    background-color: rgb(58, 129, 0);
-    color: #fff;
+    background-color: #FF5733; /* Custom color for buttons */
+    color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1.2em;
+    margin-right: 10px; /* Add margin to separate the buttons */
 }
 
 .game-over-card button:hover {
-    background-color: #387B00;
+    background-color: #FF8847; /* Custom color on hover */
+}
+
+/* Style for the Congratulations card */
+.congratulation-card {
+    display: none; /* Initially hide the congratulation card */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px; /* Set the width as needed */
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    padding: 20px;
+    text-align: center;
+    z-index: 999; /* Ensure it's on top of other elements */
+    border-radius: 10px;
+    color: white;
+}
+
+.congratulation-card h2,
+.congratulation-card p {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.congratulation-card p span {
+    font-weight: bold;
+    color: #ffea00; /* Yellow color for the score */
+}
+
+.congratulation-card button {
+    background-color: #4CAF50; /* Custom color for buttons */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+.congratulation-card button:hover {
+    background-color: #45A049; /* Custom color on hover */
 }

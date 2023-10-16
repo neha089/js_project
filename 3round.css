@@ -1,111 +1,87 @@
-body{
-    margin:0;
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    background-image: url("./1.gif.gif");
+    background-size: cover;
+   background-repeat:no-repeat;
+    width:95%;
+    height:97vh;
+    margin: 0;
     padding: 0;
-    background-color: #EEE;
+   overflow:hidden;
+   backgound-attachment:fixed;
 }
 
-h2{
-    font-family: "Pacifico", sans-serif;
-    text-align: center;
-    margin: 10px 0;
+h1 {
+    color: #ffffff;
+    margin-top: 20px;
 }
-#settings{
-    padding: 10px;
-    margin: 0 auto;
-    width: 90%;
-    max-width: 700px;
-    font-family: "Arial", sans-serif;
-    text-align: center;
+.a1 {
+    position: absolute;
+    top: 20px;
+    left: 20px; /* Adjust the left position as needed */
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
 }
-select {
-    padding: 3px 6px;
+
+#score {
+    color: #ffffff;
+    font-size: 24px;
+    margin-top: 10px;
 }
-.buttons{
-    padding: 4px 6px;
-    border: none;
-    border-radius: 5px;
-    margin: 0 5px;
+#pause-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
 }
-#newGame {
-    background-color: #BCD33D;
+
+#timer {
+    position: absolute;
+    top: 20px;
+    right: 80px; /* Adjust the right position as needed */
 }
-#endGame{
-    background-color: #fc4c3f;
-}
-fieldset{
-    font-family: Arial, Helvetica, sans-serif;
-    /* margin-top: 10px;
-    margin-bottom: 15px; */
-}
-fieldset p{
-    margin: 0;
-    font-size: 17px;
-}
-fieldset p span {
-    font-weight: bold;
-}
-.playgroundActive {
+
+/* Styling for game over and congratulations screens */
+#game-over-screen,
+#congratulations-screen {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 100vh;
-    margin: auto;
-    background-image: url("1.gif.gif");
-    /* background-position: top; */
-    background-size: cover;
-    /* max-width: 700px; */
-    position: relative;
+    height: 100%;
     display: flex;
-    /* justify-content: center;
-    align-items: center; */
-    /* box-shadow: 0px 5px 15px #999;
-    margin-bottom: ; */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-.playgroundIdle {
-    display: none;
+
+#game-over-screen h2,
+#congratulations-screen h2 {
+    color: #ffffff;
+    font-size: 36px;
 }
-.moleImg{
-    width: 300px;
-    height: 300px;
-    position: absolute;
-    display: inline-block;
-    top: 100px;
-    left: 30px;
+
+#game-over-screen p,
+#congratulations-screen p {
+    color: #ffffff;
+    font-size: 24px;
 }
-.invisibleImg{
-    display: none;
+
+#game-over-screen button,
+#congratulations-screen button {
+    background-color: #0074cc;
+    color: #ffffff;
+    font-size: 20px;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
 }
-.loseGame{
-    color:#990514;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #c79b9e;
-    padding: 10px 10px;
-    border-radius: 5px;
-    z-index: 3;
-    
-}
-.boom {
-    width:10000px;
-    height: 10000px;
-    position: absolute;
-    animation: boom .4s 1 ease;
-    transform: scale(0);
-}
-.invisibleBoom{
-    display: none;
-}
-@keyframes boom{
-    0%{
-        transform: scale(0);
-    }
-    50%{
-        transform: scale(1);
-    }
-    100%{
-        transform: scale(0);
-    }
-}
-@media all and (max-width: 400px) {
-    .moleImg{
-        width: 60px;
-        height: 50px;
-    }
+
+#game-over-screen button:hover,
+#congratulations-screen button:hover {
+    background-color: #0056a7;
 }
